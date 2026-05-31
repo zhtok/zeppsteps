@@ -1,4 +1,4 @@
-name: Runlikehell
+name: Run run run
 
 on:
   schedule:
@@ -18,7 +18,7 @@ jobs:
           sudo -E apt-get install zsh -y
           
       - name: Init Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.8
           

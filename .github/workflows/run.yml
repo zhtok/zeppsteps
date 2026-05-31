@@ -1,4 +1,4 @@
-name: Run run run
+name: Runlikehell
 
 on:
   schedule:
@@ -12,13 +12,17 @@ jobs:
     steps:
       - name: Checkout codes
         uses: actions/checkout@v5
-      - name: Update system and install zsh
-        run: |
-          sudo -E apt-get -qq update
-          sudo -E apt-get install zsh -y
-          
+        
+      - name: Cache token
+        uses: actions/cache@v3
+        with:
+          path: encrypted_tokens.data
+          key: token-cache-${{ github.sha }}
+          restore-keys: |
+            token-cache-
+            
       - name: Init Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: 3.8
           
